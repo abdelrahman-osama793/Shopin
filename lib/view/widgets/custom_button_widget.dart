@@ -14,7 +14,7 @@ class CustomButtonWidget extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),
-      height: MediaQuery.of(context).size.height * .075,
+      height: MediaQuery.of(context).size.height * .07,
       // padding: EdgeInsets.all(
       //   MediaQuery.of(context).size.height * .025,
       // ),

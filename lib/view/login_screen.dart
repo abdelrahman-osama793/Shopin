@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shopin/constants.dart';
 import 'package:shopin/view/widgets/custom_button_widget.dart';
 import 'package:shopin/view/widgets/custom_text_widget.dart';
 import 'package:shopin/view/widgets/social_media_button_widget.dart';
 import 'package:shopin/view/widgets/text_form_field_widget.dart';
+import 'package:shopin/view_model/auth_vm.dart';
 
-class LoginScreen extends StatefulWidget {
-  @override
-  _LoginScreenState createState() => _LoginScreenState();
-}
+class LoginScreen extends GetWidget<AuthViewModel> {
 
-class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     // double screenHeight = MediaQuery.of(context).size.height;
@@ -78,6 +76,9 @@ class _LoginScreenState extends State<LoginScreen> {
             SocialMediaButtonWidget(
               buttonText: "Continue with Facebook",
               imageName: "lib/assets/images/facebook.png",
+              onPressed: (){
+                controller.facebookSignInMethod();
+              },
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * .02,
@@ -85,6 +86,9 @@ class _LoginScreenState extends State<LoginScreen> {
             SocialMediaButtonWidget(
               imageName: "lib/assets/images/google.png",
               buttonText: "Continue with Google",
+              onPressed: (){
+                controller.googleSignInMethod();
+              },
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * .05,
