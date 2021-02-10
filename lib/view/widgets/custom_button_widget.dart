@@ -19,7 +19,7 @@ class CustomButtonWidget extends StatelessWidget {
       //   MediaQuery.of(context).size.height * .025,
       // ),
       color: purpleColor,
-      onPressed: () {  },
+      onPressed: onPressed,
       child: CustomTextWidget(
         text: buttonText,
         alignment: Alignment.center,

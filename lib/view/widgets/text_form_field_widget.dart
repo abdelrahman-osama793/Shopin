@@ -17,6 +17,8 @@ class CustomTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: TextFormField(
+        onSaved: onSave,
+        validator: validator,
         decoration: InputDecoration(
           labelText: label,
           labelStyle: TextStyle(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopin/constants.dart';
 import 'package:shopin/util/binding.dart';
+import 'package:shopin/view/control_screen.dart';
 import 'package:shopin/view/login_screen.dart';
 
 void main() async{
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: LoginScreen(),
+        body: ControlScreen(),
       ),
     );
   }
