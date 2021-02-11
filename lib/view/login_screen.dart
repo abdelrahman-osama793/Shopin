@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopin/constants.dart';
+import 'package:shopin/view/registration_screen.dart';
 import 'package:shopin/view/widgets/custom_button_widget.dart';
 import 'package:shopin/view/widgets/custom_text_widget.dart';
 import 'package:shopin/view/widgets/social_media_button_widget.dart';
@@ -140,9 +141,14 @@ class LoginScreen extends GetWidget<AuthViewModel> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * .02,
                     ),
-                    CustomTextWidget(
-                      text: "Register",
-                      textColor: purpleColor,
+                    GestureDetector(
+                      onTap: (){
+                        Get.to(RegistrationScreen());
+                      },
+                      child: CustomTextWidget(
+                        text: "Register",
+                        textColor: purpleColor,
+                      ),
                     ),
                   ],
                 )
