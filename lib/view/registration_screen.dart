@@ -129,6 +129,7 @@ class RegistrationScreen extends GetWidget<AuthViewModel> {
                     }
                   },
                 ),
+
               ],
             ),
           ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopin/constants.dart';
 import 'package:shopin/view/widgets/custom_text_widget.dart';
-import 'package:shopin/view_model/bottom_nav_bar_vm.dart';
+import 'package:shopin/view_model/home_view_model.dart';
 
 class HomeScreen extends StatelessWidget {
   final List<String> categories = <String>[
@@ -16,7 +16,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: _bottomNavBarWidget(),
       body: Padding(
         padding: EdgeInsets.only(
           top: MediaQuery.of(context).size.height * .07,
@@ -100,43 +99,54 @@ class HomeScreen extends StatelessWidget {
 
   // Categories list view widget
   Widget _categoriesListView() {
-    return ListView.builder(
-      itemCount: categories.length,
-      scrollDirection: Axis.horizontal,
-      itemBuilder: (context, index) {
-        return Padding(
-            padding: EdgeInsets.only(
-              top: MediaQuery.of(context).size.width * .01,
-              right: MediaQuery.of(context).size.width * .02,
-              bottom: MediaQuery.of(context).size.width * .01,
-              left: MediaQuery.of(context).size.width * .04,
-            ),
-            child: Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.width * .04,
-                    left: MediaQuery.of(context).size.width * .01,
-                    right: MediaQuery.of(context).size.width * .01,
+    return GetBuilder<HomeViewModel>(
+      builder: (controller) => ListView.builder(
+        itemCount: controller.categoryModel.length,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          return Padding(
+              padding: EdgeInsets.only(
+                top: MediaQuery.of(context).size.width * .01,
+                right: MediaQuery.of(context).size.width * .02,
+                bottom: MediaQuery.of(context).size.width * .01,
+                left: MediaQuery.of(context).size.width * .04,
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.only(
+                      // top: MediaQuery.of(context).size.width * .04,
+                      left: MediaQuery.of(context).size.width * .01,
+                      right: MediaQuery.of(context).size.width * .01,
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(150),
+                      color: Colors.grey.shade200,
+                    ),
+                    height: MediaQuery.of(context).size.height * .075,
+                    width: MediaQuery.of(context).size.height * .075,
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * .05,
+                      width: MediaQuery.of(context).size.height * .05,
+                      child: Image.network(
+                        controller.categoryModel[index].categoryImage,
+                        alignment: Alignment.bottomCenter,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
                   ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(150),
-                    color: Colors.grey.shade200,
+                  SizedBox(
+                    height: MediaQuery.of(context).size.width * .01,
                   ),
-                  height: MediaQuery.of(context).size.height * .075,
-                  width: MediaQuery.of(context).size.height * .075,
-                  child: Image.asset('lib/assets/images/men-shoes-128.png'),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.width * .01,
-                ),
-                CustomTextWidget(
-                  text: categories[index],
-                  textColor: Colors.black54,
-                )
-              ],
-            ));
-      },
+                  CustomTextWidget(
+                    text: controller.categoryModel[index].categoryName,
+                    textColor: Colors.black54,
+                  )
+                ],
+              ));
+        },
+      ),
     );
   }
 
@@ -233,40 +243,6 @@ class HomeScreen extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-
-  // Bottom navigation bar widget
-  Widget _bottomNavBarWidget() {
-    return GetBuilder<BottomNavBarViewModel>(
-      init: BottomNavBarViewModel(),
-      builder: (controller)=>
-      BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            label: 'Home',
-            icon: Icon(
-              Icons.home_outlined,
-            ),
-          ),
-          BottomNavigationBarItem(
-            label: 'My Cart',
-            icon: Icon(
-              Icons.shopping_cart_outlined,
-            ),
-          ),
-          BottomNavigationBarItem(
-            label: 'Profile',
-            icon: Icon(
-              Icons.person_outlined,
-            ),
-          ),
-        ],
-        currentIndex: controller.navigationIndex,
-        onTap: (index)=> controller.changeNavigationIndex(index),
-        // elevation: 0,
-        backgroundColor: Colors.white,
-      ),
     );
   }
 }
