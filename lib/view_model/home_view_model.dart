@@ -1,7 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shopin/model/product_model.dart';
 import 'package:shopin/model/categories_model.dart';
+import 'package:shopin/service/home_screen_service.dart';
 
 class HomeViewModel extends GetxController {
   ValueNotifier<bool> get loading => _loading;
@@ -10,20 +11,21 @@ class HomeViewModel extends GetxController {
   List<CategoriesModel> get categoryModel => _categoryModel;
   List<CategoriesModel> _categoryModel = [];
 
-  final CollectionReference _categoryCollectionRef =
-      FirebaseFirestore.instance.collection('Categories');
+  List<ProductModel> get productModel => _productModel;
+  List<ProductModel> _productModel = [];
 
   HomeViewModel() {
     getCategories();
+    getBestSellingProducts();
   }
 
   getCategories() async {
     _loading.value = true;
-    await _categoryCollectionRef.get().then((value) {
-      for (int i = 0; i < value.docs.length; i++) {
+    HomeScreenService().getCategory().then((value) {
+      for (int i = 0; i < value.length; i++) {
         _categoryModel.add(
           CategoriesModel.fromJson(
-            value.docs[i].data(),
+            value[i].data(),
           ),
         );
         _loading.value = false;
@@ -31,4 +33,20 @@ class HomeViewModel extends GetxController {
       update();
     });
   }
+
+  getBestSellingProducts() async {
+    _loading.value = true;
+    HomeScreenService().getBestSellingProducts().then((value) {
+      for (int i = 0; i < value.length; i++) {
+        _productModel.add(
+          ProductModel.fromJson(
+              value[i].data(),
+          ),
+        );
+        _loading.value = false;
+      }
+      update();
+    });
+  }
+
 }

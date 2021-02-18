@@ -10,6 +10,7 @@ class CustomTextWidget extends StatelessWidget {
   final Alignment alignment;
   final FontWeight fontWeight;
   final double letterSpacing;
+  final int maxLines;
 
   const CustomTextWidget({
     this.text,
@@ -20,6 +21,7 @@ class CustomTextWidget extends StatelessWidget {
     this.alignment = Alignment.topLeft,
     this.fontWeight,
     this.letterSpacing,
+    this.maxLines,
   });
 
   @override
@@ -36,6 +38,8 @@ class CustomTextWidget extends StatelessWidget {
           fontWeight: fontWeight,
           letterSpacing: letterSpacing,
         ),
+        maxLines: maxLines,
+        overflow: TextOverflow.ellipsis,
       ),
     );
   }
