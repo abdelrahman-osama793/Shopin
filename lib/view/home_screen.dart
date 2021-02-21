@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:shopin/constants.dart';
+import 'package:shopin/view/product_details_screen.dart';
 import 'package:shopin/view/widgets/custom_text_widget.dart';
 import 'package:shopin/view_model/home_view_model.dart';
 
@@ -175,7 +176,11 @@ class HomeScreen extends StatelessWidget {
               left: MediaQuery.of(context).size.width * .04,
             ),
             child: GestureDetector(
-              onTap: Get.to(page),
+              onTap: () {
+                Get.to(ProductDetailsScreen(
+                  productModel: controller.productModel[index],
+                ));
+              },
               child: Container(
                 width: MediaQuery.of(context).size.width * .45,
                 decoration: BoxDecoration(
@@ -205,13 +210,14 @@ class HomeScreen extends StatelessWidget {
                               CustomTextWidget(
                                 maxLines: 1,
                                 fontSize: 16,
-                                text: controller.productModel[index].productName,
+                                text:
+                                    controller.productModel[index].productName,
                                 textColor: Colors.black,
                                 alignment: Alignment.bottomLeft,
                               ),
                               CustomTextWidget(
-                                text:
-                                    controller.productModel[index].productCompany,
+                                text: controller
+                                    .productModel[index].productCompany,
                                 textColor: Colors.black54,
                                 fontSize: 14,
                                 alignment: Alignment.bottomLeft,
@@ -235,22 +241,21 @@ class HomeScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
                         boxShadow: [
-                          BoxShadow(
-                            color: Colors.black26,
-                            offset: Offset(0.0, 2.0),
-                            blurRadius: 6.0,
-                          ),
+                          imageShadow,
                         ],
                       ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10.0),
-                        child: Image(
-                          image: NetworkImage(
-                            controller.productModel[index].productImage,
+                      child: Hero(
+                        tag: controller.productModel[index].productImage,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10.0),
+                          child: Image(
+                            image: NetworkImage(
+                              controller.productModel[index].productImage,
+                            ),
+                            height: MediaQuery.of(context).size.height * .23,
+                            width: MediaQuery.of(context).size.width * .42,
+                            fit: BoxFit.cover,
                           ),
-                          height: MediaQuery.of(context).size.height * .23,
-                          width: MediaQuery.of(context).size.width * .42,
-                          fit: BoxFit.cover,
                         ),
                       ),
                     )

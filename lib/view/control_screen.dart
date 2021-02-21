@@ -24,6 +24,7 @@ class ControlScreen extends GetWidget<AuthViewModel> {
     return GetBuilder<BottomNavBarViewModel>(
       init: BottomNavBarViewModel(),
       builder: (controller) => BottomNavigationBar(
+        elevation: 0,
         items: [
           BottomNavigationBarItem(
             label: 'Home',

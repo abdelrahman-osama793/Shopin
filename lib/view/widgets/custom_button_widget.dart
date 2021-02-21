@@ -15,9 +15,6 @@ class CustomButtonWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       height: MediaQuery.of(context).size.height * .07,
-      // padding: EdgeInsets.all(
-      //   MediaQuery.of(context).size.height * .025,
-      // ),
       color: purpleColor,
       onPressed: onPressed,
       child: CustomTextWidget(
