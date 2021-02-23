@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shopin/model/user_model.dart';
 import 'package:shopin/service/firestore_user.dart';
+import 'package:shopin/view/control_screen.dart';
 import 'package:shopin/view/home_screen.dart';
 
 class AuthViewModel extends GetxController {
@@ -39,7 +40,7 @@ class AuthViewModel extends GetxController {
         await _auth.signInWithCredential(facebookCredential).then(
           (user) async {
             saveUserData(user);
-            Get.offAll(HomeScreen());
+            Get.offAll(ControlScreen());
           },
         );
         Get.offAll(HomeScreen());
@@ -75,7 +76,7 @@ class AuthViewModel extends GetxController {
       await _auth.signInWithCredential(googleAuthCredential).then(
         (user) async {
           saveUserData(user);
-          Get.offAll(HomeScreen());
+          Get.offAll(ControlScreen());
         },
       );
     } catch (e) {
@@ -97,7 +98,7 @@ class AuthViewModel extends GetxController {
   void signInWithEmailAndPassword() async {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
-      Get.offAll(HomeScreen());
+      Get.offAll(ControlScreen());
     } catch (e) {
       Get.snackbar(
         'Error',
@@ -121,7 +122,7 @@ class AuthViewModel extends GetxController {
           .then(
         (user) async {
           saveUserData(user);
-          Get.offAll(HomeScreen());
+          Get.offAll(ControlScreen());
         },
       );
     } catch (e) {

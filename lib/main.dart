@@ -4,10 +4,12 @@ import 'package:get/get.dart';
 import 'package:shopin/constants.dart';
 import 'package:shopin/util/binding.dart';
 import 'package:shopin/view/control_screen.dart';
+import 'package:shopin/view_model/cart_view_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  Get.put(CartViewModel());
   runApp(MyApp());
 }
 

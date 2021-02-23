@@ -1,10 +1,14 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shopin/constants.dart';
+import 'package:shopin/model/cart_model.dart';
 import 'package:shopin/model/product_model.dart';
 import 'package:shopin/util/color_converter.dart';
+import 'package:shopin/view/control_screen.dart';
 import 'package:shopin/view/widgets/custom_button_widget.dart';
 import 'package:shopin/view/widgets/custom_text_widget.dart';
+import 'package:shopin/view_model/cart_view_model.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   final ProductModel productModel;
@@ -44,6 +48,11 @@ class ProductDetailsScreen extends StatelessWidget {
                     bottom: 15,
                     right: 15,
                     child: FloatingActionButton(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10.0),
+                        ),
+                      ),
                       mini: true,
                       onPressed: () {},
                       elevation: 6,
@@ -52,6 +61,31 @@ class ProductDetailsScreen extends StatelessWidget {
                         Icons.shopping_cart_outlined,
                         color: Colors.white,
                         size: MediaQuery.of(context).size.width * .05,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: MediaQuery.of(context).size.width * .12,
+                    left: MediaQuery.of(context).size.width * .05,
+                    child: Container(
+                      width: MediaQuery.of(context).size.height * .05,
+                      child: RaisedButton(
+                        padding: EdgeInsets.only(
+                            right: MediaQuery.of(context).size.width * .005),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Icon(
+                          Icons.arrow_back_ios_outlined,
+                          size: MediaQuery.of(context).size.width * .05,
+                        ),
+                        elevation: 6.0,
+                        color: Colors.white,
+                        onPressed: () {
+                          Get.off(
+                            ControlScreen(),
+                          );
+                        },
                       ),
                     ),
                   ),
@@ -210,10 +244,22 @@ class ProductDetailsScreen extends StatelessWidget {
                     right: MediaQuery.of(context).size.width * .05,
                     bottom: MediaQuery.of(context).size.width * .05,
                   ),
-                  child: CustomButtonWidget(
-                    buttonText: "ADD TO CART",
-                    onPressed: (){
-                    },
+                  child: GetBuilder<CartViewModel>(
+                    init: Get.find(),
+                    builder: (controller) => CustomButtonWidget(
+                      buttonText: "ADD TO CART",
+                      onPressed: () {
+                        controller.addProduct(
+                          CartModel(
+                            productName: productModel.productName,
+                            productImage: productModel.productImage,
+                            productPrice: productModel.productPrice,
+                            productQuantity: 1,
+                            productId: productModel.productId,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ],
