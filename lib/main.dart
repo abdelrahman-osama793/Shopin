@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopin/constants.dart';
 import 'package:shopin/util/binding.dart';
-import 'package:shopin/view/control_screen.dart';
+import 'package:shopin/view/screens/three_main_screens/control_screen.dart';
 import 'package:shopin/view_model/cart_view_model.dart';
 
 void main() async {

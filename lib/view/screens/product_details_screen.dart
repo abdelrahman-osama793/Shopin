@@ -5,7 +5,8 @@ import 'package:shopin/constants.dart';
 import 'package:shopin/model/cart_model.dart';
 import 'package:shopin/model/product_model.dart';
 import 'package:shopin/util/color_converter.dart';
-import 'package:shopin/view/control_screen.dart';
+import 'package:shopin/view/screens/three_main_screens/control_screen.dart';
+import 'package:shopin/view/widgets/back_button_widget.dart';
 import 'package:shopin/view/widgets/custom_button_widget.dart';
 import 'package:shopin/view/widgets/custom_text_widget.dart';
 import 'package:shopin/view_model/cart_view_model.dart';
@@ -36,11 +37,14 @@ class ProductDetailsScreen extends StatelessWidget {
                   Container(
                     height: MediaQuery.of(context).size.height * .4,
                     width: MediaQuery.of(context).size.width,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20.0),
-                      child: Image(
-                        image: NetworkImage(productModel.productImage),
-                        fit: BoxFit.cover,
+                    child: Hero(
+                      tag: productModel.productImage,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20.0),
+                        child: Image(
+                          image: NetworkImage(productModel.productImage),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
@@ -67,26 +71,12 @@ class ProductDetailsScreen extends StatelessWidget {
                   Positioned(
                     top: MediaQuery.of(context).size.width * .12,
                     left: MediaQuery.of(context).size.width * .05,
-                    child: Container(
-                      width: MediaQuery.of(context).size.height * .05,
-                      child: RaisedButton(
-                        padding: EdgeInsets.only(
-                            right: MediaQuery.of(context).size.width * .005),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Icon(
-                          Icons.arrow_back_ios_outlined,
-                          size: MediaQuery.of(context).size.width * .05,
-                        ),
-                        elevation: 6.0,
-                        color: Colors.white,
-                        onPressed: () {
-                          Get.off(
-                            ControlScreen(),
-                          );
-                        },
-                      ),
+                    child: BackButtonWidget(
+                      onPressed: (){
+                        Get.off(
+                          ControlScreen(),
+                        );
+                      },
                     ),
                   ),
                 ],

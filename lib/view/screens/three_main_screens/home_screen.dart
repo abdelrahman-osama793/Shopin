@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:shopin/constants.dart';
-import 'package:shopin/view/product_details_screen.dart';
+import 'file:///E:/FCI/Projects/shopin/lib/view/screens/product_details_screen.dart';
 import 'package:shopin/view/widgets/custom_text_widget.dart';
 import 'package:shopin/view_model/home_view_model.dart';
 
@@ -101,9 +101,7 @@ class HomeScreen extends StatelessWidget {
       ),
       child: TextFormField(
         decoration: InputDecoration(
-            border: InputBorder.none,
-            prefixIcon: Icon(Icons.search),
-            hintText: "What would like to find?"),
+            border: InputBorder.none, prefixIcon: Icon(Icons.search), hintText: "What would like to find?"),
       ),
     );
   }
@@ -199,7 +197,7 @@ class HomeScreen extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * .45,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.grey.shade200,
+                          color: Colors.grey.shade100,
                         ),
                         child: Padding(
                           padding: EdgeInsets.only(
@@ -210,14 +208,12 @@ class HomeScreen extends StatelessWidget {
                               CustomTextWidget(
                                 maxLines: 1,
                                 fontSize: 16,
-                                text:
-                                    controller.productModel[index].productName,
+                                text: controller.productModel[index].productName,
                                 textColor: Colors.black,
                                 alignment: Alignment.bottomLeft,
                               ),
                               CustomTextWidget(
-                                text: controller
-                                    .productModel[index].productCompany,
+                                text: controller.productModel[index].productCompany,
                                 textColor: Colors.black54,
                                 fontSize: 14,
                                 alignment: Alignment.bottomLeft,
@@ -226,8 +222,7 @@ class HomeScreen extends StatelessWidget {
                                 height: MediaQuery.of(context).size.width * .01,
                               ),
                               CustomTextWidget(
-                                text: '\$' +
-                                    controller.productModel[index].productPrice,
+                                text: '\$' + controller.productModel[index].productPrice,
                                 fontSize: 16,
                                 textColor: purpleColor,
                                 alignment: Alignment.bottomLeft,

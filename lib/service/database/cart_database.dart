@@ -1,7 +1,6 @@
 import 'package:path/path.dart';
 import 'package:shopin/constants.dart';
 import 'package:shopin/model/cart_model.dart';
-import 'package:shopin/model/product_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 class CartDatabase {

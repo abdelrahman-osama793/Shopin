@@ -27,7 +27,6 @@ class CustomTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: alignment,
       child: AutoSizeText(
         text,
         maxFontSize: maxFontSize,
@@ -41,6 +40,7 @@ class CustomTextWidget extends StatelessWidget {
         maxLines: maxLines,
         overflow: TextOverflow.ellipsis,
       ),
+      alignment: alignment,
     );
   }
 }

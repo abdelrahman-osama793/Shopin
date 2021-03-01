@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 const Color purpleColor = Color(0xFF996FAF);
-const Color blue = Color(0xFF360DFF);
 const Color grayBlack = Color(0xFF3C3D3E);
 const Color darkBlue = Color(0xFF2C2D69);
 
@@ -21,3 +20,26 @@ final String columnId = 'productId';
 final dbVersion = 1;
 final dbName = 'CartProducts.db';
 
+// SharedPreference variables
+const CachedUserData = 'CACHED_USER_DATA';
+
+// Checkout variables
+const kTileHeight = 50.0;
+const inProgressColor = Colors.black87;
+const todoColor = Color(0xffd1d2d7);
+
+enum Pages {
+  DeliveryTime,
+  AddAddress,
+  Summary,
+}
+
+enum DeliveryTypes{
+  StandardDelivery,
+  EmergencyDelivery,
+  LazyDelivery,
+}
+
+const String StandardDeliveryInfo = "\nOrder will be delivered within 5 - 10 business days";
+const String EmergencyDeliveryInfo = "\nOrder will be delivered within 2 - 3 business days";
+const String LazyDeliveryInfo = "\nOrder will be delivered within 15 - 20 business days";
