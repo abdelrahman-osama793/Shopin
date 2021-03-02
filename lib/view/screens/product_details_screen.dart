@@ -1,13 +1,11 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shopin/constants.dart';
 import 'package:shopin/model/product_model.dart';
 import 'package:shopin/util/color_converter.dart';
-<<<<<<< HEAD:lib/view/screens/product_details_screen.dart
 import 'package:shopin/view/screens/three_main_screens/control_screen.dart';
 import 'package:shopin/view/widgets/back_button_widget.dart';
-=======
->>>>>>> parent of 1be6d01 (Cart screen is working but didn't finish the checkout):lib/view/product_details_screen.dart
 import 'package:shopin/view/widgets/custom_button_widget.dart';
 import 'package:shopin/view/widgets/custom_text_widget.dart';
 
@@ -63,7 +61,6 @@ class ProductDetailsScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-<<<<<<< HEAD:lib/view/screens/product_details_screen.dart
                   Positioned(
                     top: MediaQuery.of(context).size.width * .12,
                     left: MediaQuery.of(context).size.width * .05,
@@ -75,8 +72,6 @@ class ProductDetailsScreen extends StatelessWidget {
                       },
                     ),
                   ),
-=======
->>>>>>> parent of 1be6d01 (Cart screen is working but didn't finish the checkout):lib/view/product_details_screen.dart
                 ],
               ),
             ),
