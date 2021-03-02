@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 const Color purpleColor = Color(0xFF996FAF);
 const Color grayBlack = Color(0xFF3C3D3E);
 const Color darkBlue = Color(0xFF2C2D69);
+const scaffoldBackgroundColor = Color(0xFFF3F5f9);
 
 const BoxShadow imageShadow = BoxShadow(
   color: Colors.black26,
   offset: Offset(0.0, 2.0),
   blurRadius: 6.0,
 );
+<<<<<<< HEAD
 
 // Database variables
 final String cartTableName = 'cartItems';
@@ -43,3 +45,5 @@ enum DeliveryTypes{
 const String StandardDeliveryInfo = "\nOrder will be delivered within 5 - 10 business days";
 const String EmergencyDeliveryInfo = "\nOrder will be delivered within 2 - 3 business days";
 const String LazyDeliveryInfo = "\nOrder will be delivered within 15 - 20 business days";
+=======
+>>>>>>> parent of 1be6d01 (Cart screen is working but didn't finish the checkout)

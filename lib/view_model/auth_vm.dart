@@ -6,8 +6,12 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shopin/model/user_model.dart';
 import 'package:shopin/service/firestore_user.dart';
+<<<<<<< HEAD
 import 'package:shopin/util/local_storage_shared_preference.dart';
 import 'package:shopin/view/screens/three_main_screens/control_screen.dart';
+=======
+import 'package:shopin/view/home_screen.dart';
+>>>>>>> parent of 1be6d01 (Cart screen is working but didn't finish the checkout)
 
 class AuthViewModel extends GetxController {
   GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
@@ -42,9 +46,15 @@ class AuthViewModel extends GetxController {
       try {
         //Add the Facebook credentials to "user" table in firebase
         await _auth.signInWithCredential(facebookCredential).then(
+<<<<<<< HEAD
           (value) async {
             getCurrentUserData(value.user.uid);
             Get.offAll(ControlScreen());
+=======
+          (user) async {
+            saveUserData(user);
+            Get.offAll(HomeScreen());
+>>>>>>> parent of 1be6d01 (Cart screen is working but didn't finish the checkout)
           },
         );
       } catch (e) {
@@ -76,9 +86,15 @@ class AuthViewModel extends GetxController {
     //Add the Google credentials to "user" table in firebase
     try {
       await _auth.signInWithCredential(googleAuthCredential).then(
+<<<<<<< HEAD
         (value) async {
           getCurrentUserData(value.user.uid);
           Get.offAll(ControlScreen());
+=======
+        (user) async {
+          saveUserData(user);
+          Get.offAll(HomeScreen());
+>>>>>>> parent of 1be6d01 (Cart screen is working but didn't finish the checkout)
         },
       );
     } catch (e) {
@@ -99,10 +115,15 @@ class AuthViewModel extends GetxController {
 
   void signInWithEmailAndPassword() async {
     try {
+<<<<<<< HEAD
       await _auth.signInWithEmailAndPassword(email: email, password: password).then((value) async {
         getCurrentUserData(value.user.uid);
       });
       Get.offAll(ControlScreen());
+=======
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      Get.offAll(HomeScreen());
+>>>>>>> parent of 1be6d01 (Cart screen is working but didn't finish the checkout)
     } catch (e) {
       Get.snackbar(
         'Error',
@@ -124,7 +145,7 @@ class AuthViewModel extends GetxController {
       await _auth.createUserWithEmailAndPassword(email: email, password: password).then(
         (user) async {
           saveUserData(user);
-          Get.offAll(ControlScreen());
+          Get.offAll(HomeScreen());
         },
       );
     } catch (e) {

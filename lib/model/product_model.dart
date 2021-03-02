@@ -1,16 +1,17 @@
+import 'package:flutter/material.dart';
+import 'package:shopin/util/color_converter.dart';
+
 class ProductModel {
-  String productId;
   String productName;
   String productCompany;
   String productImage;
   String productDescription;
-  List<String> productSize;
+  List <String> productSize;
   String productPrice;
-  List<String> productColor;
+  List <String> productColor;
 
   ProductModel(
-      {this.productId,
-      this.productName,
+      {this.productName,
       this.productImage,
       this.productDescription,
       this.productSize,
@@ -22,7 +23,6 @@ class ProductModel {
     if (map == null) {
       return;
     }
-    productId = map['id'];
     productName = map['name'];
     productCompany = map['company'];
     productImage = map['image'];
@@ -34,7 +34,6 @@ class ProductModel {
 
   toJson() {
     return {
-      'id': productId,
       'name': productName,
       'company': productCompany,
       'image': productImage,
