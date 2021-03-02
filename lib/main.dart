@@ -4,7 +4,11 @@ import 'package:get/get.dart';
 import 'package:shopin/constants.dart';
 import 'package:shopin/util/binding.dart';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import 'package:shopin/view/screens/three_main_screens/control_screen.dart';
+=======
+import 'package:shopin/view/control_screen.dart';
+>>>>>>> parent of 454d4cc (UI edits, Delivery time UI, files rearrange)
 import 'package:shopin/view_model/cart_view_model.dart';
 =======
 import 'package:shopin/view/control_screen.dart';
