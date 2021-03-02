@@ -7,11 +7,16 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shopin/model/user_model.dart';
 import 'package:shopin/service/firestore_user.dart';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import 'package:shopin/util/local_storage_shared_preference.dart';
 import 'package:shopin/view/screens/three_main_screens/control_screen.dart';
 =======
 import 'package:shopin/view/home_screen.dart';
 >>>>>>> parent of 1be6d01 (Cart screen is working but didn't finish the checkout)
+=======
+import 'package:shopin/view/control_screen.dart';
+import 'package:shopin/view/home_screen.dart';
+>>>>>>> parent of 454d4cc (UI edits, Delivery time UI, files rearrange)
 
 class AuthViewModel extends GetxController {
   GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
@@ -20,25 +25,21 @@ class AuthViewModel extends GetxController {
   String email;
   String password;
   String name;
-  String profilePic;
   Rx<User> _user = Rx<User>();
 
   String get user => _user.value?.email;
 
-  final LocalStorageSharedPreference localStorageSharedPref = Get.find();
-
   @override
   void onInit() {
+    // TODO: implement onInit
     super.onInit();
     _user.bindStream(_auth.authStateChanges());
-    if (_auth.currentUser != null){
-      getCurrentUserData(_auth.currentUser.uid);
-    }
   }
 
   //Sign in with Facebook method
   void facebookSignInMethod() async {
-    FacebookLoginResult facebookLoginResult = await _facebookSignIn.logIn(['email']);
+    FacebookLoginResult facebookLoginResult =
+        await _facebookSignIn.logIn(['email']);
     if (facebookLoginResult.status == FacebookLoginStatus.loggedIn) {
       final accessToken = facebookLoginResult.accessToken.token;
       //Requires access token only
@@ -47,8 +48,13 @@ class AuthViewModel extends GetxController {
         //Add the Facebook credentials to "user" table in firebase
         await _auth.signInWithCredential(facebookCredential).then(
 <<<<<<< HEAD
+<<<<<<< HEAD
           (value) async {
             getCurrentUserData(value.user.uid);
+=======
+          (user) async {
+            saveUserData(user);
+>>>>>>> parent of 454d4cc (UI edits, Delivery time UI, files rearrange)
             Get.offAll(ControlScreen());
 =======
           (user) async {
@@ -57,6 +63,7 @@ class AuthViewModel extends GetxController {
 >>>>>>> parent of 1be6d01 (Cart screen is working but didn't finish the checkout)
           },
         );
+        Get.offAll(HomeScreen());
       } catch (e) {
         Get.snackbar(
           'Error',
@@ -77,7 +84,8 @@ class AuthViewModel extends GetxController {
   //Sign in with Google method
   void googleSignInMethod() async {
     final GoogleSignInAccount googleUserAccount = await _googleSignIn.signIn();
-    GoogleSignInAuthentication googleSignInAuthentication = await googleUserAccount.authentication;
+    GoogleSignInAuthentication googleSignInAuthentication =
+        await googleUserAccount.authentication;
 
     final AuthCredential googleAuthCredential = GoogleAuthProvider.credential(
       accessToken: googleSignInAuthentication.accessToken,
@@ -87,8 +95,13 @@ class AuthViewModel extends GetxController {
     try {
       await _auth.signInWithCredential(googleAuthCredential).then(
 <<<<<<< HEAD
+<<<<<<< HEAD
         (value) async {
           getCurrentUserData(value.user.uid);
+=======
+        (user) async {
+          saveUserData(user);
+>>>>>>> parent of 454d4cc (UI edits, Delivery time UI, files rearrange)
           Get.offAll(ControlScreen());
 =======
         (user) async {
@@ -116,9 +129,13 @@ class AuthViewModel extends GetxController {
   void signInWithEmailAndPassword() async {
     try {
 <<<<<<< HEAD
+<<<<<<< HEAD
       await _auth.signInWithEmailAndPassword(email: email, password: password).then((value) async {
         getCurrentUserData(value.user.uid);
       });
+=======
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+>>>>>>> parent of 454d4cc (UI edits, Delivery time UI, files rearrange)
       Get.offAll(ControlScreen());
 =======
       await _auth.signInWithEmailAndPassword(email: email, password: password);
@@ -142,7 +159,9 @@ class AuthViewModel extends GetxController {
 
   void registerWithEmailAndPassword() async {
     try {
-      await _auth.createUserWithEmailAndPassword(email: email, password: password).then(
+      await _auth
+          .createUserWithEmailAndPassword(email: email, password: password)
+          .then(
         (user) async {
           saveUserData(user);
           Get.offAll(HomeScreen());
@@ -170,18 +189,8 @@ class AuthViewModel extends GetxController {
       userId: userCredential.user.uid,
       email: userCredential.user.email,
       name: name == null ? userCredential.user.displayName : name,
-      profilePic: profilePic == null ? userCredential.user.photoURL : "default",
+      profilePic: '',
     );
     await FireStoreUser().addUsersToFireStoreDB(userModel);
-  }
-
-  void saveUserSharedPref(UserModel userModel) async {
-    await localStorageSharedPref.setUserData(userModel);
-  }
-
-  void getCurrentUserData(String userID) async {
-    await FireStoreUser().getCurrentUser(userID).then((value) {
-      saveUserSharedPref(UserModel.fromJson(value.data()));
-    });
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shopin/view/screens/three_main_screens/cart_screen.dart';
-import 'package:shopin/view/screens/three_main_screens/home_screen.dart';
-import 'package:shopin/view/screens/three_main_screens/profile_screen.dart';
+import 'package:shopin/view/cart_screen.dart';
+import 'package:shopin/view/home_screen.dart';
+import 'package:shopin/view/profile_screen.dart';
 
 class BottomNavBarViewModel extends GetxController{
   int _navigationIndex = 0;

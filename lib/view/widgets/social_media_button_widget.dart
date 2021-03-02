@@ -18,10 +18,7 @@ class SocialMediaButtonWidget extends StatelessWidget {
     return FlatButton(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
-        side: BorderSide(
-          color: Colors.grey.shade300,
-          width: 2,
-        ),
+        side: BorderSide(color: Colors.grey.shade300, width: 2),
       ),
       height: MediaQuery.of(context).size.height * .07,
       onPressed: onPressed,

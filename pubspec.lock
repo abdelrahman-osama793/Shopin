@@ -71,13 +71,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.15.0-nullsafety.3"
-  convert:
-    dependency: transitive
-    description:
-      name: convert
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.1"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -160,13 +153,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.1.2+1"
-  flutter_svg:
-    dependency: "direct main"
-    description:
-      name: flutter_svg
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.18.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -248,6 +234,7 @@ packages:
     source: hosted
     version: "1.8.0-nullsafety.1"
 <<<<<<< HEAD
+<<<<<<< HEAD
   path_drawing:
     dependency: transitive
     description:
@@ -262,6 +249,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.4"
+=======
+>>>>>>> parent of 454d4cc (UI edits, Delivery time UI, files rearrange)
   path_provider_linux:
     dependency: transitive
     description:
@@ -283,13 +272,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.0.4+3"
-  petitparser:
-    dependency: transitive
-    description:
-      name: petitparser
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.1.0"
   platform:
     dependency: transitive
     description:
@@ -346,13 +328,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.10.0-nullsafety.1"
-  status_change:
-    dependency: "direct main"
-    description:
-      name: status_change
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
   stream_channel:
     dependency: transitive
     description:
@@ -417,6 +392,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.2"
+<<<<<<< HEAD
   xml:
     dependency: transitive
     description:
@@ -426,6 +402,8 @@ packages:
     version: "4.5.1"
 =======
 >>>>>>> parent of 1be6d01 (Cart screen is working but didn't finish the checkout)
+=======
+>>>>>>> parent of 454d4cc (UI edits, Delivery time UI, files rearrange)
 sdks:
   dart: ">=2.10.2 <2.11.0"
   flutter: ">=1.22.2 <2.0.0"

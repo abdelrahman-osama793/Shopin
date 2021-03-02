@@ -26,11 +26,14 @@ dependencies:
   path: ^1.7.0
 <<<<<<< HEAD
   shared_preferences: ^0.5.12+4
+<<<<<<< HEAD
   flutter_svg: ^0.18.0
   status_change: ^1.0.0
 
 =======
 >>>>>>> parent of 1be6d01 (Cart screen is working but didn't finish the checkout)
+=======
+>>>>>>> parent of 454d4cc (UI edits, Delivery time UI, files rearrange)
 
 
 dev_dependencies:

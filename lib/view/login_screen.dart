@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopin/constants.dart';
-import 'package:shopin/view/screens/auth_screens/registration_screen.dart';
+import 'package:shopin/view/registration_screen.dart';
 import 'package:shopin/view/widgets/custom_button_widget.dart';
 import 'package:shopin/view/widgets/custom_text_widget.dart';
 import 'package:shopin/view/widgets/social_media_button_widget.dart';
@@ -17,11 +17,7 @@ class LoginScreen extends GetWidget<AuthViewModel> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(
-            top: MediaQuery.of(context).size.height * .07,
-            left: MediaQuery.of(context).size.width * .05,
-            right: MediaQuery.of(context).size.width * .05,
-          ),
+          padding: EdgeInsets.only(top: 80, left: 20, right: 20.0),
           child: Form(
             key: _formKey,
             child: Column(
@@ -41,79 +37,51 @@ class LoginScreen extends GetWidget<AuthViewModel> {
                   letterSpacing: 1.5,
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * .02,
+                  height: MediaQuery.of(context).size.height * .05,
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    color: Colors.white,
-                    boxShadow: [imageShadow],
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(MediaQuery.of(context).size.width * .05),
-                    child: Column(
-                      children: [
-                        CustomTextWidget(
-                          text: "Email Address",
-                          textColor: Colors.grey,
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * .01,
-                        ),
-                        CustomTextFormField(
-                          hint: "abcd@example.com",
-                          prefixIcon: Icons.person_outline,
-                          onSave: (value) {
-                            controller.email = value;
-                          },
-                          validator: (value) {
-                            if (value == null) {
-                              Get.snackbar(
-                                "Empty field",
-                                "Please enter your email",
-                                borderRadius: 10,
-                                colorText: Colors.white,
-                                snackPosition: SnackPosition.BOTTOM,
-                                backgroundColor: Colors.black,
-                              );
-                            }
-                          },
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * .02,
-                        ),
-                        CustomTextWidget(
-                          text: "Password",
-                          textColor: Colors.grey,
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * .01,
-                        ),
-                        CustomTextFormField(
-                          hint: "********",
-                          prefixIcon: Icons.lock_outline,
-                          onSave: (value) {
-                            controller.password = value;
-                          },
-                          validator: (value) {
-                            if (value == null) {
-                              Get.snackbar(
-                                "Empty field",
-                                "Please enter your password",
-                                borderRadius: 10,
-                                colorText: Colors.white,
-                                snackPosition: SnackPosition.BOTTOM,
-                                backgroundColor: Colors.black,
-                              );
-                            }
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
+                CustomTextFormField(
+                  label: "Email Address",
+                  hint: "abcd@example.com",
+                  onSave: (value) {
+                    controller.email = value;
+                  },
+                  validator: (value) {
+                    if (value == null) {
+                      Get.snackbar(
+                        "Empty field",
+                        "Please enter your email",
+                        borderRadius: 10,
+                        colorText: Colors.white,
+                        snackPosition: SnackPosition.BOTTOM,
+                        backgroundColor: Colors.black,
+                      );
+                    }
+                  },
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * .02,
+                ),
+                CustomTextFormField(
+                  label: "Password",
+                  hint: "********",
+                  onSave: (value) {
+                    controller.password = value;
+                  },
+                  validator: (value) {
+                    if (value == null) {
+                      Get.snackbar(
+                        "Empty field",
+                        "Please enter your password",
+                        borderRadius: 10,
+                        colorText: Colors.white,
+                        snackPosition: SnackPosition.BOTTOM,
+                        backgroundColor: Colors.black,
+                      );
+                    }
+                  },
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * .03,
                 ),
                 CustomTextWidget(
                   text: "Forgot password?",
@@ -183,7 +151,7 @@ class LoginScreen extends GetWidget<AuthViewModel> {
                       ),
                     ),
                   ],
-                ),
+                )
               ],
             ),
           ),
