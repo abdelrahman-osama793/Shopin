@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:shopin/constants.dart';
-import 'file:///E:/FCI/Projects/shopin/lib/view/screens/checkout_screen.dart';
 import 'package:shopin/view/widgets/custom_button_widget.dart';
 import 'package:shopin/view/widgets/custom_text_widget.dart';
 import 'package:shopin/view_model/cart_view_model.dart';
@@ -71,7 +70,7 @@ class CartScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Icon(
-                              Icons.favorite,
+                              Icons.favorite_border_outlined,
                               size: MediaQuery.of(context).size.width * .05,
                             ),
                             elevation: 6.0,
@@ -270,7 +269,7 @@ class CartScreen extends StatelessWidget {
                         CustomButtonWidget(
                           buttonText: "CHECKOUT",
                           onPressed: () {
-                            Get.to(CheckoutScreen());
+                            // Get.to(CheckoutScreen());
                           },
                         )
                       ],

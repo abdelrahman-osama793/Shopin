@@ -2,12 +2,14 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopin/constants.dart';
+import 'package:shopin/model/cart_model.dart';
 import 'package:shopin/model/product_model.dart';
 import 'package:shopin/util/color_converter.dart';
 import 'package:shopin/view/screens/three_main_screens/control_screen.dart';
 import 'package:shopin/view/widgets/back_button_widget.dart';
 import 'package:shopin/view/widgets/custom_button_widget.dart';
 import 'package:shopin/view/widgets/custom_text_widget.dart';
+import 'package:shopin/view_model/cart_view_model.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   final ProductModel productModel;
@@ -54,6 +56,11 @@ class ProductDetailsScreen extends StatelessWidget {
                       onPressed: () {},
                       elevation: 6,
                       backgroundColor: purpleColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10.0),
+                        ),
+                      ),
                       child: Icon(
                         Icons.shopping_cart_outlined,
                         color: Colors.white,
@@ -65,7 +72,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     top: MediaQuery.of(context).size.width * .12,
                     left: MediaQuery.of(context).size.width * .05,
                     child: BackButtonWidget(
-                      onPressed: (){
+                      onPressed: () {
                         Get.off(
                           ControlScreen(),
                         );
@@ -227,10 +234,22 @@ class ProductDetailsScreen extends StatelessWidget {
                     right: MediaQuery.of(context).size.width * .05,
                     bottom: MediaQuery.of(context).size.width * .05,
                   ),
-                  child: CustomButtonWidget(
-                    buttonText: "ADD TO CART",
-                    onPressed: (){
-                    },
+                  child: GetBuilder<CartViewModel>(
+                    init: Get.find(),
+                    builder: (controller) => CustomButtonWidget(
+                      buttonText: "ADD TO CART",
+                      onPressed: (){
+                        controller.addProduct(
+                          CartModel(
+                            productImage: productModel.productImage,
+                            productName: productModel.productName,
+                            productPrice: productModel.productPrice,
+                            productQuantity: 1,
+                            productId: productModel.productId,
+                          ),
+                        );
+                      }
+                    ),
                   ),
                 ),
               ],
@@ -257,8 +276,7 @@ class ProductDetailsScreen extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * .5,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
-                        border:
-                            Border.all(color: Colors.grey.shade300, width: 2.0),
+                        border: Border.all(color: Colors.grey.shade300, width: 2.0),
                       ),
                       child: CustomTextWidget(
                         alignment: Alignment.center,
@@ -269,8 +287,7 @@ class ProductDetailsScreen extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * .35,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
-                        border:
-                            Border.all(color: Colors.grey.shade300, width: 2.0),
+                        border: Border.all(color: Colors.grey.shade300, width: 2.0),
                       ),
                       child: CustomTextWidget(
                         alignment: Alignment.center,

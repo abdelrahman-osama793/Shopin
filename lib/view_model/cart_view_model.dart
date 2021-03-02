@@ -85,9 +85,13 @@ class CartViewModel extends GetxController {
 
 // Decrease quantity and update the quantity in the database
   decreaseQuantity(int index) async {
-    _cartModel[index].productQuantity--;
-    _totalPrice -= (double.parse(_cartModel[index].productPrice));
-    await cartDBInstance.updateCartItems(_cartModel[index]);
+    if (_cartModel[index].productQuantity == 0) {
+      return;
+    } else {
+      _cartModel[index].productQuantity--;
+      _totalPrice -= (double.parse(_cartModel[index].productPrice));
+      await cartDBInstance.updateCartItems(_cartModel[index]);
+    }
     update();
   }
 }
